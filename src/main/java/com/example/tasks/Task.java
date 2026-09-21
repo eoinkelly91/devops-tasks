@@ -1,4 +1,4 @@
-// Task.java
+
 package com.example.tasks;
 
 public class Task {
@@ -17,8 +17,10 @@ public class Task {
         this.title = "Task #" + id;
     }
 
-    public void executeTask() {
-        System.out.println("Executing '" + title + "'");
+    public String executeTask() {
+        String taskMessage = "Executing '" + title + "'";
+        System.out.println(taskMessage);
+        return taskMessage;
     }
 
     public String getTitle() {
