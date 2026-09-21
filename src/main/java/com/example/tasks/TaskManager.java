@@ -1,9 +1,10 @@
-
 package com.example.tasks;
 
+import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class TaskManager {
     private final List<Task> tasks = new ArrayList<>();
 
