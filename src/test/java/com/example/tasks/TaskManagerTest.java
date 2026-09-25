@@ -3,6 +3,7 @@ package com.example.tasks;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -52,5 +53,22 @@ class TaskManagerTest {
         List<Task> tasks = manager.list();
 
         assertThrows(UnsupportedOperationException.class, () -> tasks.add(new Task()));
+    }
+
+    @Test
+    void deleteRemovesMatchingTask() {
+        manager.add("Write tests");
+
+        boolean removed = manager.delete("Write tests");
+
+        assertTrue(removed);
+        assertTrue(manager.list().isEmpty());
+    }
+
+    @Test
+    void deleteReturnsFalseWhenNotFound() {
+        boolean removed = manager.delete("Nonexistent");
+
+        assertFalse(removed);
     }
 }

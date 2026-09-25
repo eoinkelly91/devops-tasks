@@ -20,6 +20,10 @@ public class TaskManager {
         return task;
     }
 
+    public boolean delete(String title) {
+        return tasks.removeIf(task -> task.getTitle().equals(title));
+    }
+
     public List<Task> list() {
         return List.copyOf(tasks);
     }
