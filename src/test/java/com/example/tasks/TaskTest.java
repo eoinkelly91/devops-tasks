@@ -1,29 +1,23 @@
 package com.example.tasks;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
 
 class TaskTest {
 
     @Test
-    void defaultConstructorUsesTestTitle() {
-        assertEquals("test", new Task().getTitle());
-    }
-
-    @Test
     void titleConstructorStoresTitle() {
-        assertEquals("Download Files", new Task("Download Files").getTitle());
+        Task task = new Task("Learn Docker");
+
+        assertEquals("Learn Docker", task.getTitle());
     }
 
     @Test
-    void idConstructorBuildsTitleFromId() {
-        assertEquals("Task #101", new Task(101).getTitle());
-    }
+    void idIsNullBeforePersisting() {
+        Task task = new Task("Learn Docker");
 
-    @Test
-    void newTaskExecutesTask() {
-        assertEquals("Executing 'test'", new Task().executeTask());
+        assertNull(task.getId());
     }
-
 }
